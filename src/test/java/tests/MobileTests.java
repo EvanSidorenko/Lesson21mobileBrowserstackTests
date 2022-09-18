@@ -18,7 +18,7 @@ public class MobileTests extends TestBase {
     void searchTest() {
         back();
         step("Search BrowserStack in Wikipedia", () -> {
-            $(AppiumBy.id("org.wikipedia.alpha:id/search_container")).click();
+            $(AppiumBy.id("org.wikipedia.alpha:id/voice_search_button")).click();
             $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("BrowserStack");
         });
 
@@ -33,7 +33,7 @@ public class MobileTests extends TestBase {
     void openContent() {
         back();
         step("Search Beatles in Wikipedia", () -> {
-            $(AppiumBy.id("org.wikipedia.alpha:id/search_container")).click();
+            $(AppiumBy.id("org.wikipedia.alpha:id/voice_search_button")).click();
             $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Beatles");
         });
 
