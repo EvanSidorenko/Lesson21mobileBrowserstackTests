@@ -1,20 +1,19 @@
 package helpers;
 
-import config.RemoteConfig;
 import org.aeonbits.owner.ConfigFactory;
+import owner.BrowserstackKeys;
 
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
 
-public class Browserstack {
+public class BrowserStack {
+    static BrowserstackKeys conf = ConfigFactory.create(BrowserstackKeys.class);
+
     public static String videoUrl(String sessionId) {
-        RemoteConfig config = ConfigFactory.create(RemoteConfig.class);
-        String login = config.login();
-        String password = config.key();
         String url = format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
 
         return given()
-                .auth().basic(login, password)
+                .auth().basic(conf.username(), conf.access_key())
                 .log().all()
                 .when()
                 .get(url)
